@@ -17,16 +17,17 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch('/api/serebii')
-        const {ingredients, recipes} = await res.json()
+        const response = await fetch('/data.txt');
+        const data = await response.json();
+        const {ingredients, recipes} = data;
 
         setIngredients(objToArr(ingredients))
         setCurry(objToArr(recipes[CURRY]))
         setSalads(objToArr(recipes[SALADS]))
         setDesserts(objToArr(recipes[DESSERTS]))
-      } catch (err) {
-        console.error("Error: ", err)
-        setSmthWrong(true)
+      } catch (error) {
+          console.error('Error with data file:', error);
+          setSmthWrong(true)
       }
     })()
   }, [])
