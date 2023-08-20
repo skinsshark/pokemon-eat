@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CURRY, SALADS, DESSERTS } from '../../helpers/utils';
 
-const RecipeIngredients = ({
-  category,
-  dish,
-  ingredients,
-  bag,
-  reorderRecipes,
-}) => {
+const RecipeIngredients = ({ dish, ingredients, bag }) => {
   const { numOfItems, ...dishIngredients } = dish.ingredients;
 
   return (
@@ -46,13 +40,7 @@ const RecipeIngredients = ({
   );
 };
 
-const RecipeList = ({
-  category,
-  ingredients,
-  recipes,
-  bag,
-  reorderRecipes,
-}) => {
+const RecipeList = ({ category, ingredients, recipes, bag }) => {
   return (
     <div className="p-5">
       {recipes?.map((dish, i) => (
@@ -70,7 +58,6 @@ const RecipeList = ({
               dish={dish}
               ingredients={ingredients}
               bag={bag}
-              reorderRecipes={reorderRecipes}
             />
           </div>
         </div>
@@ -92,27 +79,6 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
     }
   }, [recipeBook]);
 
-  const reorderRecipes = (dish, category) => {
-    console.log('update', dish, category);
-    let pushRecipeIndex;
-    switch (category) {
-      case CURRY:
-        let newCurryArr = [...curry];
-        pushRecipeIndex = curry.findIndex((el) => el.name === dish.name);
-        newCurryArr.unshift([...newCurryArr].splice(pushRecipeIndex, 1)[0]);
-        setCurry(newCurryArr);
-        break;
-      case SALADS:
-        let newSaladArr = [...salads];
-        pushRecipeIndex = salads.findIndex((el) => el.name === dish.name);
-        break;
-      case DESSERTS:
-        let newDessertArr = [...desserts];
-        pushRecipeIndex = desserts.findIndex((el) => el.name === dish.name);
-        break;
-    }
-  };
-
   return (
     <div className="max-h-[60vh] overflow-scroll rounded-b-2xl border-t border-t-yellow-500">
       {category === CURRY && (
@@ -121,7 +87,6 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
-          reorderRecipes={reorderRecipes}
         />
       )}
       {category === SALADS && (
@@ -130,7 +95,6 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
-          reorderRecipes={reorderRecipes}
         />
       )}
       {category === DESSERTS && (
@@ -139,7 +103,6 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
-          reorderRecipes={reorderRecipes}
         />
       )}
     </div>

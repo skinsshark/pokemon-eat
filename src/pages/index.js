@@ -45,8 +45,43 @@ export default function Home() {
   }, [ingredients]);
 
   useEffect(() => {
-    // console.log(bag);
-  }, [bag]);
+    if (recipeBook != null) {
+      const updatedRecipes = [...recipeBook[category]].sort((a, b) => {
+        const canFullyMakeA = canFullyMakeRecipe(a);
+        const canFullyMakeB = canFullyMakeRecipe(b);
+        return canFullyMakeB - canFullyMakeA;
+      });
+
+      setRecipeBook((prevRecipeBook) => ({
+        ...prevRecipeBook,
+        [category]: updatedRecipes,
+      }));
+    }
+  }, [bag, category]);
+
+  const canFullyMakeRecipe = (recipe) => {
+    if (bag != null) {
+      let score = 0;
+
+      const neededIngredients = Object.keys(recipe.ingredients);
+      let ingredientsUsed = 0;
+      for (let i = 0; i < neededIngredients.length - 1; i++) {
+        const item = neededIngredients[i];
+        const availQty = bag[item];
+        const reqQty = recipe.ingredients[item];
+
+        score += Math.min(availQty, reqQty) / recipe.ingredients.numOfItems;
+        if (availQty >= reqQty) {
+          ingredientsUsed += Math.min(availQty, reqQty);
+        }
+      }
+
+      // huge win if you can make recipe exactly
+      if (ingredientsUsed === recipe.ingredients.numOfItems) score *= 10;
+
+      return score * ingredientsUsed;
+    }
+  };
 
   return (
     <>
