@@ -58,11 +58,11 @@ export default function Home() {
           </section>
           <article className="flex-1 rounded-2xl border border-yellow-500">
             <ul className="ml-10">
-              <li className={`mr-5 inline-block ${category==CURRY ? 'font-bold': ''}`} onClick={() => setCategory(CURRY)}>Curry</li>
-              <li className={`mr-5 inline-block ${category==SALADS ? 'font-bold': ''}`} onClick={() => setCategory(SALADS)}>Salads</li>
-              <li className={`mr-5 inline-block ${category==DESSERTS ? 'font-bold': ''}`} onClick={() => setCategory(DESSERTS)}>Desserts</li>
+              <li className={`mr-5 cursor-pointer inline-block ${category==CURRY ? 'font-bold': ''}`} onClick={() => setCategory(CURRY)}>Curry</li>
+              <li className={`mr-5 cursor-pointer inline-block ${category==SALADS ? 'font-bold': ''}`} onClick={() => setCategory(SALADS)}>Salads</li>
+              <li className={`mr-5 cursor-pointer inline-block ${category==DESSERTS ? 'font-bold': ''}`} onClick={() => setCategory(DESSERTS)}>Desserts</li>
             </ul>
-            <Recipes recipeBook={recipeBook} category={category} ingredients={ingredients} />
+            <Recipes recipeBook={recipeBook} category={category} ingredients={ingredients} bag={bag} />
           </article>
         </main>
       )}

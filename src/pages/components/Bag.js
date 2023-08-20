@@ -54,7 +54,7 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
       </div>
       {bag[name] > 0 ? (
         <div
-          className="absolute bg-white top-[-0.5rem] right-[-0.5rem]"
+          className="rounded-full absolute bg-white top-[-0.5rem] right-[-0.5rem]"
           onClick={decrementCount}
         >
           <div className="rounded-full border-gray-300 border w-8 h-8 text-center pt-[1px]">

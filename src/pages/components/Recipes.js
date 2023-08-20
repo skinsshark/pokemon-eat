@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CURRY, SALADS, DESSERTS, objToArr } from "../../helpers/utils";
 
-const RecipeIngredients = ({ dish, ingredients }) => {
+const RecipeIngredients = ({ dish, ingredients, bag }) => {
   const { numOfItems, ...dishIngredients } = dish.ingredients;
 
   return (
@@ -9,6 +9,7 @@ const RecipeIngredients = ({ dish, ingredients }) => {
       <p>Ingr.: </p>
       {Array.from(Object.entries(dishIngredients)).map((obj, i) => {
         const [ingredient, count] = obj;
+        const hasEnough = bag[ingredient] >= count
         let imgSrc = "";
 
         ingredients.find((el) => {
@@ -25,7 +26,13 @@ const RecipeIngredients = ({ dish, ingredients }) => {
             <span className="rounded-full bg-amber-100 p-1 mx-2">
               <img src={imgSrc} className="w-7" />
             </span>{" "}
-            <span className="font-semibold">{count}</span>
+            <span
+              className={`font-semibold ${
+                hasEnough ? "text-gray-700" : "text-red-600"
+              }`}
+            >
+              {count}
+            </span>
           </p>
         );
       })}
@@ -33,7 +40,7 @@ const RecipeIngredients = ({ dish, ingredients }) => {
   );
 };
 
-const RecipeList = ({ category, ingredients, recipes }) => {
+const RecipeList = ({ category, ingredients, recipes, bag }) => {
   return (
     <div className="p-5">
       {recipes?.map((dish, i) => (
@@ -46,7 +53,7 @@ const RecipeList = ({ category, ingredients, recipes }) => {
           </div>
           <div className="px-5 py-10 flex flex-col justify-between">
             <h3 className="text-lg font-bold">{dish.name}</h3>
-            <RecipeIngredients dish={dish} ingredients={ingredients} />
+            <RecipeIngredients dish={dish} ingredients={ingredients} bag={bag} />
           </div>
         </div>
       ))}
@@ -54,7 +61,7 @@ const RecipeList = ({ category, ingredients, recipes }) => {
   );
 };
 
-export default function Recipes({ recipeBook, category, ingredients }) {
+export default function Recipes({ recipeBook, category, ingredients, bag }) {
   const [curry, setCurry] = useState([]);
   const [salads, setSalads] = useState([]);
   const [desserts, setDesserts] = useState([]);
@@ -74,6 +81,7 @@ export default function Recipes({ recipeBook, category, ingredients }) {
           recipes={curry}
           ingredients={ingredients}
           category={category}
+          bag={bag}
         />
       )}
       {category === SALADS && (
@@ -81,6 +89,7 @@ export default function Recipes({ recipeBook, category, ingredients }) {
           recipes={salads}
           ingredients={ingredients}
           category={category}
+          bag={bag}
         />
       )}
       {category === DESSERTS && (
@@ -88,6 +97,7 @@ export default function Recipes({ recipeBook, category, ingredients }) {
           recipes={desserts}
           ingredients={ingredients}
           category={category}
+          bag={bag}
         />
       )}
     </div>
