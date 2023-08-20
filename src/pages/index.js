@@ -93,14 +93,14 @@ export default function Home() {
           {'OH NO! Something is wrong! Please try refreshing >////<'}
         </h1>
       ) : (
-        <main className="md:flex select-none items-center">
-          <section className="flex-2 md:max-w-[60%]">
+        <main className="xl:flex justify-center select-none items-center">
+          <section className="xl:max-w-[60%]">
             <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
             {bag?.count > 0 ? (
               <Button title="Reset All" onClick={() => clearBag()} />
             ) : null}
           </section>
-          <article className="flex-1 rounded-2xl border border-yellow-500">
+          <article className="mx-3 rounded-2xl border border-yellow-500">
             <ul className="ml-10">
               <li
                 className={`mr-5 cursor-pointer inline-block ${

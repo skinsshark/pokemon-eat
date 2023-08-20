@@ -5,7 +5,7 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
   const { numOfItems, ...dishIngredients } = dish.ingredients;
 
   return (
-    <div className="flex items-center">
+    <div className="text-xxs sm:text-xs flex items-center">
       <p>Ingr.: </p>
       {Array.from(Object.entries(dishIngredients)).map((obj, i) => {
         const [ingredient, count] = obj;
@@ -23,8 +23,8 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
             key={`${dish.name.split(' ').join('-')}-${i}`}
             className="flex items-center mr-4"
           >
-            <span className="rounded-full bg-amber-100 p-1 mx-2">
-              <img src={imgSrc} className="w-7" />
+            <span className="rounded-full flex-shrink-0 bg-amber-100 p-1">
+              <img src={imgSrc} className="w-4 sm:w-5 lg:w-7" />
             </span>{' '}
             <span
               className={`font-semibold ${
@@ -48,11 +48,11 @@ const RecipeList = ({ category, ingredients, recipes, bag }) => {
           key={`${category}-${i}`}
           className="flex border border-amber-700 rounded-xl mb-6"
         >
-          <div className="w-40 bg-yellow-100 rounded-l-xl">
-            <img className="inline-block" src={dish.photo} />
+          <div className="bg-yellow-100 rounded-l-xl">
+            <img className="w-20 lg:w-40" src={dish.photo} />
           </div>
-          <div className="px-5 py-10 flex flex-col justify-between">
-            <h3 className="text-lg font-bold">{dish.name}</h3>
+          <div className="px-5 py-2 lg:py-10 flex flex-col justify-between flex-1 flex-shrink">
+            <h3 className="text-sm md:text-lg font-bold">{dish.name}</h3>
             <RecipeIngredients
               category={category}
               dish={dish}
@@ -80,7 +80,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
   }, [recipeBook]);
 
   return (
-    <div className="max-h-[60vh] overflow-scroll rounded-b-2xl border-t border-t-yellow-500">
+    <div className="max-h-[60vh] overflow-scroll overflow-x-hidden rounded-b-2xl border-t border-t-yellow-500">
       {category === CURRY && (
         <RecipeList
           recipes={curry}

@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 body {
-    padding: 40px;
-    background-color: rgb(255, 249, 228);
+  background-color: rgb(255, 249, 228);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
