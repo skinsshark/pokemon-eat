@@ -34,17 +34,24 @@ const RecipeIngredients = ({ dish, ingredients }) => {
 };
 
 const RecipeList = ({ category, ingredients, recipes }) => {
-  return recipes?.map((dish, i) => (
-    <div key={`${category}-${i}`} className="flex border border-amber-700 rounded-xl mb-6">
-      <div className="w-40 bg-yellow-100 rounded-l-xl">
-        <img className="inline-block" src={dish.photo} />
-      </div>
-      <div className="px-5 py-10 flex flex-col justify-between">
-        <h3 className="text-lg font-bold">{dish.name}</h3>
-        <RecipeIngredients dish={dish} ingredients={ingredients} />
-      </div>
+  return (
+    <div className="p-5">
+      {recipes?.map((dish, i) => (
+        <div
+          key={`${category}-${i}`}
+          className="flex border border-amber-700 rounded-xl mb-6"
+        >
+          <div className="w-40 bg-yellow-100 rounded-l-xl">
+            <img className="inline-block" src={dish.photo} />
+          </div>
+          <div className="px-5 py-10 flex flex-col justify-between">
+            <h3 className="text-lg font-bold">{dish.name}</h3>
+            <RecipeIngredients dish={dish} ingredients={ingredients} />
+          </div>
+        </div>
+      ))}
     </div>
-  ));
+  );
 };
 
 export default function Recipes({ recipeBook, category, ingredients }) {
@@ -61,7 +68,7 @@ export default function Recipes({ recipeBook, category, ingredients }) {
   }, [recipeBook]);
 
   return (
-    <div>
+    <div className="max-h-[60vh] overflow-scroll rounded-b-2xl border-t border-t-yellow-500">
       {category === CURRY && (
         <RecipeList
           recipes={curry}

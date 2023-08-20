@@ -35,7 +35,7 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
   };
 
   return (
-    <div className="relative rounded-2xl border-amber-300 border m-3 cursor-pointer">
+    <div className="relative rounded-2xl border-yellow-500 border m-3 cursor-pointer bg-white">
       <img
         className="inline-block p-4 pb-16 lg:p-7 lg:pb-16"
         src={data.photo}
@@ -43,7 +43,7 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
       />
       <div
         onClick={incrementCount}
-        className="absolute left-0 right-0 bottom-0 text-xs lg:text-md font-bold text-amber-900 border border-amber-800 bg-yellow-300 text-center rounded-b-2xl p-2"
+        className="absolute left-0 right-0 bottom-0 text-xs lg:text-md font-bold text-amber-900 border border-amber-800 bg-yellow-300 text-center rounded-b-[15px] p-2"
       >
         {name}
         {bag[name] > 0 ? (

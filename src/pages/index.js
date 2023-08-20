@@ -52,11 +52,11 @@ export default function Home() {
           {"OH NO! Something wrong! Please try refreshing >////<"}
         </h1>
       ) : (
-        <main className="md:flex select-none">
+        <main className="md:flex select-none items-center">
           <section className="flex-2 md:max-w-[60%]">
             <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
           </section>
-          <article className="flex-1">
+          <article className="flex-1 rounded-2xl border border-yellow-500">
             <ul className="ml-10">
               <li className={`mr-5 inline-block ${category==CURRY ? 'font-bold': ''}`} onClick={() => setCategory(CURRY)}>Curry</li>
               <li className={`mr-5 inline-block ${category==SALADS ? 'font-bold': ''}`} onClick={() => setCategory(SALADS)}>Salads</li>
