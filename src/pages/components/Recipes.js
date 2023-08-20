@@ -1,7 +1,13 @@
-import { useEffect, useState } from "react";
-import { CURRY, SALADS, DESSERTS, objToArr } from "../../helpers/utils";
+import { useEffect, useState } from 'react';
+import { CURRY, SALADS, DESSERTS } from '../../helpers/utils';
 
-const RecipeIngredients = ({ dish, ingredients, bag }) => {
+const RecipeIngredients = ({
+  category,
+  dish,
+  ingredients,
+  bag,
+  reorderRecipes,
+}) => {
   const { numOfItems, ...dishIngredients } = dish.ingredients;
 
   return (
@@ -9,8 +15,8 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
       <p>Ingr.: </p>
       {Array.from(Object.entries(dishIngredients)).map((obj, i) => {
         const [ingredient, count] = obj;
-        const hasEnough = bag[ingredient] >= count
-        let imgSrc = "";
+        const hasEnough = bag[ingredient] >= count;
+        let imgSrc = '';
 
         ingredients.find((el) => {
           if (el[0] === ingredient) {
@@ -20,15 +26,15 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
 
         return (
           <p
-            key={`${dish.name.split(" ").join("-")}-${i}`}
+            key={`${dish.name.split(' ').join('-')}-${i}`}
             className="flex items-center mr-4"
           >
             <span className="rounded-full bg-amber-100 p-1 mx-2">
               <img src={imgSrc} className="w-7" />
-            </span>{" "}
+            </span>{' '}
             <span
               className={`font-semibold ${
-                hasEnough ? "text-gray-700" : "text-red-600"
+                hasEnough ? 'text-gray-700' : 'text-red-600'
               }`}
             >
               {count}
@@ -40,7 +46,13 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
   );
 };
 
-const RecipeList = ({ category, ingredients, recipes, bag }) => {
+const RecipeList = ({
+  category,
+  ingredients,
+  recipes,
+  bag,
+  reorderRecipes,
+}) => {
   return (
     <div className="p-5">
       {recipes?.map((dish, i) => (
@@ -53,7 +65,13 @@ const RecipeList = ({ category, ingredients, recipes, bag }) => {
           </div>
           <div className="px-5 py-10 flex flex-col justify-between">
             <h3 className="text-lg font-bold">{dish.name}</h3>
-            <RecipeIngredients dish={dish} ingredients={ingredients} bag={bag} />
+            <RecipeIngredients
+              category={category}
+              dish={dish}
+              ingredients={ingredients}
+              bag={bag}
+              reorderRecipes={reorderRecipes}
+            />
           </div>
         </div>
       ))}
@@ -74,6 +92,27 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
     }
   }, [recipeBook]);
 
+  const reorderRecipes = (dish, category) => {
+    console.log('update', dish, category);
+    let pushRecipeIndex;
+    switch (category) {
+      case CURRY:
+        let newCurryArr = [...curry];
+        pushRecipeIndex = curry.findIndex((el) => el.name === dish.name);
+        newCurryArr.unshift([...newCurryArr].splice(pushRecipeIndex, 1)[0]);
+        setCurry(newCurryArr);
+        break;
+      case SALADS:
+        let newSaladArr = [...salads];
+        pushRecipeIndex = salads.findIndex((el) => el.name === dish.name);
+        break;
+      case DESSERTS:
+        let newDessertArr = [...desserts];
+        pushRecipeIndex = desserts.findIndex((el) => el.name === dish.name);
+        break;
+    }
+  };
+
   return (
     <div className="max-h-[60vh] overflow-scroll rounded-b-2xl border-t border-t-yellow-500">
       {category === CURRY && (
@@ -82,6 +121,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          reorderRecipes={reorderRecipes}
         />
       )}
       {category === SALADS && (
@@ -90,6 +130,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          reorderRecipes={reorderRecipes}
         />
       )}
       {category === DESSERTS && (
@@ -98,6 +139,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          reorderRecipes={reorderRecipes}
         />
       )}
     </div>

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { objToArr } from "../../helpers/utils";
+import Button from './Button';
 
 export default function Bag({ bag, ingredients, setBag }) {
   return (
@@ -24,6 +23,7 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
     setBag((prevBag) => ({
       ...prevBag,
       [name]: currCount + 1,
+      count: prevBag.count + 1,
     }));
   };
 
@@ -31,6 +31,7 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
     setBag((prevBag) => ({
       ...prevBag,
       [name]: Math.max(currCount - 1, 0),
+      count: Math.max(prevBag.count - 1, 0),
     }));
   };
 
@@ -55,11 +56,12 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
       {bag[name] > 0 ? (
         <div
           className="rounded-full absolute bg-white top-[-0.5rem] right-[-0.5rem]"
-          onClick={decrementCount}
+          // onClick={decrementCount}
         >
-          <div className="rounded-full border-gray-300 border w-8 h-8 text-center pt-[1px]">
+          {/* <div className="rounded-full border-gray-300 border w-8 h-8 text-center pt-[1px]">
             —
-          </div>
+          </div> */}
+          <Button onClick={decrementCount} title="—" width="fixed" />
         </div>
       ) : null}
     </div>
