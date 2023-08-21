@@ -23,7 +23,7 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
             key={`${dish.name.split(' ').join('-')}-${i}`}
             className="flex items-center mr-4"
           >
-            <span className="rounded-full flex-shrink-0 bg-amber-100 p-1">
+            <span className="rounded-full flex-shrink-0 bg-amber-100 p-1 mr-1">
               <img src={imgSrc} className="w-4 sm:w-5 lg:w-7" />
             </span>{' '}
             <span
@@ -48,11 +48,14 @@ const RecipeList = ({ category, ingredients, recipes, bag }) => {
           key={`${category}-${i}`}
           className="flex border border-amber-700 rounded-xl mb-6"
         >
-          <div className="bg-yellow-100 rounded-l-xl">
-            <img className="w-20 lg:w-40" src={dish.photo} />
+          <div className="bg-yellow-100 rounded-l-xl p-2 flex">
+            <img
+              className="w-20 xl:w-24 2xl:w-36 self-center"
+              src={dish.photo}
+            />
           </div>
-          <div className="px-5 py-2 lg:py-10 flex flex-col justify-between flex-1 flex-shrink">
-            <h3 className="text-sm md:text-lg font-bold">{dish.name}</h3>
+          <div className="px-4 py-2 md:py-2 xl:py-10 flex flex-col justify-between flex-1 flex-shrink">
+            <h3 className="text-sm xl:text-lg font-bold">{dish.name}</h3>
             <RecipeIngredients
               category={category}
               dish={dish}
@@ -80,7 +83,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
   }, [recipeBook]);
 
   return (
-    <div className="max-h-[60vh] overflow-scroll overflow-x-hidden rounded-b-2xl border-t border-t-yellow-500">
+    <div className="max-h-[60vh] overflow-scroll overflow-x-hidden rounded-b-2xl">
       {category === CURRY && (
         <RecipeList
           recipes={curry}

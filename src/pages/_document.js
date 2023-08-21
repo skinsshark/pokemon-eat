@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body className="xl:h-[90vh]">
+      <body className="flex justify-center items-center xl:px-10">
         <Main />
         <NextScript />
       </body>
