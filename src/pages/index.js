@@ -95,10 +95,16 @@ export default function Home() {
       ) : (
         <main className="xl:flex justify-center select-none items-center">
           <section className="xl:max-w-[60%]">
-            <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
-            {bag?.count > 0 ? (
+            <div className="flex justify-between">
+              <div className="flex-grow border-b-2 flex items-stretch p-2 mr-2">
+                <div className="w-3 bg-green-500" />
+                <h2 className="ml-3 self-center font-semibold">Choose Ingredients</h2>
+              </div>
               <Button title="Reset All" onClick={() => clearBag()} />
-            ) : null}
+            </div>
+            <div className='mt-4'>
+              <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
+            </div>
           </section>
           <article className="mx-3 rounded-2xl border border-yellow-500">
             <ul className="ml-10">
