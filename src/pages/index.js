@@ -94,14 +94,14 @@ export default function Home() {
       <Head>
         <title>Pokémon Eat</title>
       </Head>
-      <main className="xl:flex justify-center select-none items-end">
+      <main className="xl:flex justify-center select-none">
         {smthWrong ? (
           <h1 className="mt-40 text-center text-3xl">
             {'OH NO! Something is wrong! Please try refreshing >////<'}
           </h1>
         ) : (
           <>
-            <section className="xl:w-[60%] pr-5 flex-none mb-20 xl:mb-0">
+            <section className="xl:w-[60%] px-2 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
               <header className="flex justify-center my-6">
                 <img
                   src="/assets/title.png"
@@ -122,19 +122,23 @@ export default function Home() {
                 <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
               </div>
             </section>
-            <article className="mx-3 xl:w-[40%] flex flex-col items-start">
-              <div className="flex w-full justify-between">
-                <div className="flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
+            <article className="mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start mt-20">
+              <div className="xl:flex xl:w-full justify-between">
+                <div className="inline-block mb-4 xl:mb-0 xl:flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
                   <img
                     src="/assets/recipe-list-icon.png"
-                    className="w-5 self-center"
+                    className="inline-block w-5 self-center"
                   />
-                  <h4 className="px-10">Recipe List</h4>
+                  <h4 className="inline-block px-4 2xl:px-10 text-sm xl:text-lg self-center">
+                    Recipe List
+                  </h4>
                 </div>
                 <div className="flex shadow-pot bg-white font-bold py-1.5 px-4 rounded-full">
                   <img src="/assets/pot.png" className="w-5 self-center" />
                   <div className="flex items-center pl-3 text-gray-700">
-                    <p className="mr-6">Pot Size:</p>
+                    <p className="mr-4 2xl:mr-6 text-sm xl:text-lg">
+                      Pot Size:
+                    </p>
                     <Button
                       title="-"
                       width="fixed"
@@ -147,7 +151,9 @@ export default function Home() {
                         )
                       }
                     />
-                    <p className="w-12 text-center">{potSize}</p>
+                    <p className="w-8 xl:w-12 text-center text-sm xl:text-lg">
+                      {potSize}
+                    </p>
                     <Button
                       title="+"
                       width="fixed"
@@ -156,14 +162,14 @@ export default function Home() {
                       borderColor="white"
                       onClick={() =>
                         setPotSize((prevPotSize) =>
-                          Math.min(prevPotSize + 1, 1000)
+                          Math.min(prevPotSize + 1, 999)
                         )
                       }
                     />
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl border-2 px-3 border-yellow-500 mt-8 w-full">
+              <div className="rounded-2xl border-2 px-3 border-yellow-500 mt-8 w-full mb-20 xl:mb-5">
                 <CategorySelector
                   category={category}
                   setCategory={setCategory}

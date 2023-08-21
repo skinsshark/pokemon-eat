@@ -12,7 +12,7 @@ export default function Button(props) {
     console.error('Buttons are only fixed or auto width');
     return null;
   }
-  
+
   return (
     <div
       onClick={onClick}

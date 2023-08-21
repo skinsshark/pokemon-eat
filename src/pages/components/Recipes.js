@@ -28,7 +28,9 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
             </span>{' '}
             <span
               className={`font-semibold ${
-                hasEnough && dish.ingredients.numOfItems <= potSize ? 'text-gray-700' : 'text-red-600'
+                hasEnough && dish.ingredients.numOfItems <= potSize
+                  ? 'text-gray-700'
+                  : 'text-red-600'
               }`}
             >
               {count}
@@ -70,7 +72,13 @@ const RecipeList = ({ category, ingredients, recipes, bag, potSize }) => {
   );
 };
 
-export default function Recipes({ recipeBook, category, ingredients, bag, potSize }) {
+export default function Recipes({
+  recipeBook,
+  category,
+  ingredients,
+  bag,
+  potSize,
+}) {
   const [curry, setCurry] = useState([]);
   const [salads, setSalads] = useState([]);
   const [desserts, setDesserts] = useState([]);
@@ -84,7 +92,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag, potSiz
   }, [recipeBook]);
 
   return (
-    <div className="max-h-[65vh] overflow-scroll overflow-x-hidden rounded-b-2xl">
+    <div className="xl:max-h-[41vw] overflow-scroll overflow-x-hidden rounded-b-2xl">
       {category === CURRY && (
         <RecipeList
           recipes={curry}
