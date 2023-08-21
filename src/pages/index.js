@@ -89,40 +89,55 @@ export default function Home() {
       <Head>
         <title>Pokémon Eat</title>
       </Head>
-      <header className="flex justify-center">
-        <img src="/assets/title.png" className="w-1/4" alt="My Image" />
-      </header>
-      {smthWrong ? (
-        <h1 className="text-6xl">
-          {'OH NO! Something is wrong! Please try refreshing >////<'}
-        </h1>
-      ) : (
-        <main className="xl:flex justify-center select-none items-center">
-          <section className="xl:w-[60%] pr-5 flex-none">
-            <div className="flex justify-between">
-              <div className="flex-grow border-b-2 flex items-stretch p-2 mr-2">
-                <div className="w-3 bg-green-500" />
-                <h2 className="ml-3 self-center font-semibold">
-                  Choose Ingredients
-                </h2>
+      <main className="xl:flex justify-center select-none items-end">
+        {smthWrong ? (
+          <h1 className="mt-40 text-center text-3xl">
+            {'OH NO! Something is wrong! Please try refreshing >////<'}
+          </h1>
+        ) : (
+          <>
+            <section className="xl:w-[60%] pr-5 flex-none mb-20 xl:mb-0">
+              <header className="flex justify-center my-6">
+                <img
+                  src="/assets/title.png"
+                  className="w-4/5 md:w-1/2 xl:w-2/3"
+                  alt="Pokemon Eat"
+                />
+              </header>
+              <div className="flex justify-between">
+                <div className="flex-grow border-b-2 flex items-stretch p-2 mr-2">
+                  <div className="w-3 bg-green-500" />
+                  <h2 className="ml-3 self-center font-semibold">
+                    Choose Ingredients
+                  </h2>
+                </div>
+                <Button title="Reset All" onClick={() => clearBag()} />
               </div>
-              <Button title="Reset All" onClick={() => clearBag()} />
-            </div>
-            <div className="mt-4">
-              <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
-            </div>
-          </section>
-          <article className="flex-none mx-3 rounded-2xl border-2 px-3 border-yellow-500 xl:w-[40%]">
-            <CategorySelector category={category} setCategory={setCategory} />
-            <Recipes
-              recipeBook={recipeBook}
-              category={category}
-              ingredients={ingredients}
-              bag={bag}
-            />
-          </article>
-        </main>
-      )}
+              <div className="mt-4">
+                <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
+              </div>
+            </section>
+            <article className="mx-3 xl:w-[40%] flex flex-col items-start">
+              <div className="flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
+                <img src="/assets/recipe-list-icon.png" className="w-5" />
+                <h4 className="px-10">Recipe List</h4>
+              </div>
+              <div className="rounded-2xl border-2 px-3 border-yellow-500 mt-8 w-full">
+                <CategorySelector
+                  category={category}
+                  setCategory={setCategory}
+                />
+                <Recipes
+                  recipeBook={recipeBook}
+                  category={category}
+                  ingredients={ingredients}
+                  bag={bag}
+                />
+              </div>
+            </article>
+          </>
+        )}
+      </main>
     </>
   );
 }
