@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CURRY, SALADS, DESSERTS } from '../../helpers/utils';
 
-const RecipeIngredients = ({ dish, ingredients, bag }) => {
+const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
   const { numOfItems, ...dishIngredients } = dish.ingredients;
 
   return (
@@ -28,7 +28,7 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
             </span>{' '}
             <span
               className={`font-semibold ${
-                hasEnough ? 'text-gray-700' : 'text-red-600'
+                hasEnough && dish.ingredients.numOfItems <= potSize ? 'text-gray-700' : 'text-red-600'
               }`}
             >
               {count}
@@ -40,7 +40,7 @@ const RecipeIngredients = ({ dish, ingredients, bag }) => {
   );
 };
 
-const RecipeList = ({ category, ingredients, recipes, bag }) => {
+const RecipeList = ({ category, ingredients, recipes, bag, potSize }) => {
   return (
     <div className="p-5">
       {recipes?.map((dish, i) => (
@@ -61,6 +61,7 @@ const RecipeList = ({ category, ingredients, recipes, bag }) => {
               dish={dish}
               ingredients={ingredients}
               bag={bag}
+              potSize={potSize}
             />
           </div>
         </div>
@@ -69,7 +70,7 @@ const RecipeList = ({ category, ingredients, recipes, bag }) => {
   );
 };
 
-export default function Recipes({ recipeBook, category, ingredients, bag }) {
+export default function Recipes({ recipeBook, category, ingredients, bag, potSize }) {
   const [curry, setCurry] = useState([]);
   const [salads, setSalads] = useState([]);
   const [desserts, setDesserts] = useState([]);
@@ -90,6 +91,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          potSize={potSize}
         />
       )}
       {category === SALADS && (
@@ -98,6 +100,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          potSize={potSize}
         />
       )}
       {category === DESSERTS && (
@@ -106,6 +109,7 @@ export default function Recipes({ recipeBook, category, ingredients, bag }) {
           ingredients={ingredients}
           category={category}
           bag={bag}
+          potSize={potSize}
         />
       )}
     </div>

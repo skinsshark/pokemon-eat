@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       fontSize: {
         xxs: '0.5rem',
+      },
+      boxShadow: {
+        'pot': '0 2px #bbb',
       }
     },
   },

@@ -13,6 +13,7 @@ export default function Home() {
   const [ingredients, setIngredients] = useState([]);
 
   const [recipeBook, setRecipeBook] = useState();
+  const [potSize, setPotSize] = useState(15);
   const [bag, setBag] = useState(0);
 
   useEffect(() => {
@@ -58,7 +59,7 @@ export default function Home() {
         [category]: updatedRecipes,
       }));
     }
-  }, [bag, category]);
+  }, [bag, category, potSize]);
 
   const canFullyMakeRecipe = (recipe) => {
     if (bag != null) {
@@ -78,7 +79,11 @@ export default function Home() {
       }
 
       // huge win if you can make recipe exactly
-      if (ingredientsUsed === recipe.ingredients.numOfItems) score *= 10;
+      if (
+        ingredientsUsed === recipe.ingredients.numOfItems &&
+        potSize >= recipe.ingredients.numOfItems
+      )
+        score *= 10;
 
       return score * ingredientsUsed;
     }
@@ -118,9 +123,45 @@ export default function Home() {
               </div>
             </section>
             <article className="mx-3 xl:w-[40%] flex flex-col items-start">
-              <div className="flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
-                <img src="/assets/recipe-list-icon.png" className="w-5" />
-                <h4 className="px-10">Recipe List</h4>
+              <div className="flex w-full justify-between">
+                <div className="flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
+                  <img
+                    src="/assets/recipe-list-icon.png"
+                    className="w-5 self-center"
+                  />
+                  <h4 className="px-10">Recipe List</h4>
+                </div>
+                <div className="flex shadow-pot bg-white font-bold py-1.5 px-4 rounded-full">
+                  <img src="/assets/pot.png" className="w-5 self-center" />
+                  <div className="flex items-center pl-3 text-gray-700">
+                    <p className="mr-6">Pot Size:</p>
+                    <Button
+                      title="-"
+                      width="fixed"
+                      bgColor="orange-400"
+                      textColor="white"
+                      borderColor="white"
+                      onClick={() =>
+                        setPotSize((prevPotSize) =>
+                          Math.max(prevPotSize - 1, 0)
+                        )
+                      }
+                    />
+                    <p className="w-12 text-center">{potSize}</p>
+                    <Button
+                      title="+"
+                      width="fixed"
+                      bgColor="orange-400"
+                      textColor="white"
+                      borderColor="white"
+                      onClick={() =>
+                        setPotSize((prevPotSize) =>
+                          Math.min(prevPotSize + 1, 1000)
+                        )
+                      }
+                    />
+                  </div>
+                </div>
               </div>
               <div className="rounded-2xl border-2 px-3 border-yellow-500 mt-8 w-full">
                 <CategorySelector
@@ -132,6 +173,7 @@ export default function Home() {
                   category={category}
                   ingredients={ingredients}
                   bag={bag}
+                  potSize={potSize}
                 />
               </div>
             </article>
