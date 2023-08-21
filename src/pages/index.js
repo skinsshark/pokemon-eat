@@ -93,6 +93,8 @@ export default function Home() {
     <>
       <Head>
         <title>Pokémon Eat</title>
+        <meta property="og:title" content="Pokémon Eat" />
+        <meta property="og:image" content="/assets/preview.png" />
       </Head>
       <main className="xl:flex justify-center select-none">
         {smthWrong ? (
