@@ -6,6 +6,7 @@ export default function Button(props) {
     bgColor = 'white',
     textColor = 'black',
     borderColor = 'gray-400',
+    isDisabled = false,
   } = props;
 
   if (width !== 'auto' && width !== 'fixed') {
@@ -15,10 +16,10 @@ export default function Button(props) {
 
   return (
     <div
-      onClick={onClick}
-      className={`${
-        width === 'fixed' ? 'w-7 h-7' : 'px-9 py-2 text-xs'
-      } font-semibold cursor-pointer rounded-full bg-${bgColor} text-${textColor} border border-${borderColor} inline-block self-center text-center`}
+      onClick={!isDisabled ? onClick : null}
+      className={`${width === 'fixed' ? 'w-7 h-7' : 'px-9 py-2 text-xs'} ${
+        isDisabled ? 'bg-gray-300' : 'cursor-pointer'
+      } font-semibold rounded-full bg-${bgColor} text-${textColor} border border-${borderColor} inline-block self-center text-center`}
     >
       {title}
     </div>

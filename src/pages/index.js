@@ -147,9 +147,10 @@ export default function Home() {
                       bgColor="orange-400"
                       textColor="white"
                       borderColor="white"
+                      isDisabled={potSize === 15}
                       onClick={() =>
                         setPotSize((prevPotSize) =>
-                          Math.max(prevPotSize - 3, 0)
+                          Math.max(prevPotSize - 3, 15)
                         )
                       }
                     />
@@ -162,9 +163,10 @@ export default function Home() {
                       bgColor="orange-400"
                       textColor="white"
                       borderColor="white"
+                      isDisabled={potSize === 81}
                       onClick={() =>
                         setPotSize((prevPotSize) =>
-                          Math.min(prevPotSize + 3, 999)
+                          Math.min(prevPotSize + 3, 81)
                         )
                       }
                     />
