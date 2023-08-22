@@ -20,19 +20,27 @@ const Ingredient = ({ bag, ingredient, setBag }) => {
   const currCount = bag[name];
 
   const incrementCount = () => {
-    setBag((prevBag) => ({
-      ...prevBag,
-      [name]: currCount + 1,
-      count: prevBag.count + 1,
-    }));
+    setBag((prevBag) => {
+      const newBag = {
+        ...prevBag,
+        [name]: currCount + 1,
+        count: prevBag.count + 1,
+      };
+      localStorage.setItem('bag', JSON.stringify(newBag));
+      return newBag;
+    });
   };
 
   const decrementCount = () => {
-    setBag((prevBag) => ({
-      ...prevBag,
-      [name]: Math.max(currCount - 1, 0),
-      count: Math.max(prevBag.count - 1, 0),
-    }));
+    setBag((prevBag) => {
+      const newBag = {
+        ...prevBag,
+        [name]: Math.max(currCount - 1, 0),
+        count: Math.max(prevBag.count - 1, 0),
+      };
+      localStorage.setItem('bag', JSON.stringify(newBag));
+      return newBag;
+    });
   };
 
   return (

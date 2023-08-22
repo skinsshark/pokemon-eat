@@ -14,12 +14,11 @@ export default function Home() {
 
   const [recipeBook, setRecipeBook] = useState();
   const [potSize, setPotSize] = useState(15);
-  const [bag, setBag] = useState(0);
+  const [bag, setBag] = useState({});
 
   useEffect(() => {
     (async () => {
       try {
-        // const response = await fetch("/api/serebii");
         const response = await fetch('/data.txt');
         const data = await response.json();
         const { ingredients, recipes } = data;
@@ -39,13 +38,23 @@ export default function Home() {
       ingredients.forEach((ing) => (newBag[ing[0]] = 0));
       newBag.count = 0;
     }
+
+    localStorage.setItem('bag', JSON.stringify(newBag));
     setBag(newBag);
   };
 
+  // once ingredients are loaded in
   useEffect(() => {
-    clearBag();
+    // get bag from local storage if saved
+    const savedBag = localStorage.getItem('bag');
+    if (savedBag != null) {
+      setBag(() => JSON.parse(savedBag));
+    } else {
+      clearBag();
+    }
   }, [ingredients]);
 
+  // update recipes list
   useEffect(() => {
     if (recipeBook != null) {
       const updatedRecipes = [...recipeBook[category]].sort((a, b) => {
