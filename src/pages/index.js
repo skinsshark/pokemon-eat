@@ -112,7 +112,7 @@ export default function Home() {
                 />
               </header>
               <div className="flex justify-between">
-                <div className="flex-grow border-b-2 flex items-stretch p-2 mr-2">
+                <div className="flex-grow border-b-2 border-b-gray-200 flex items-stretch p-2 mr-2">
                   <div className="w-3 bg-green-500" />
                   <h2 className="ml-3 self-center font-semibold">
                     Choose Ingredients

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* tailwind default is applying grey border for some weird reason */
+* {
+  border-color: inherit;
+}
+
 body {
   background-color: rgb(254, 254, 238);
 }
