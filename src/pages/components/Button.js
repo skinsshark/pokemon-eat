@@ -21,7 +21,7 @@ export default function Button(props) {
         isDisabled ? 'bg-gray-300' : 'cursor-pointer'
       } font-semibold rounded-full bg-${bgColor} text-${textColor} border border-${borderColor} inline-block self-center text-center`}
     >
-      {title.length <= 1 ? <p className="mt-[-2px]">{title}</p> : title}
+      {title?.length <= 1 ? <p className="mt-[-2px]">{title}</p> : title}
     </button>
   );
 }
