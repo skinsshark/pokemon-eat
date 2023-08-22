@@ -44,7 +44,7 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
 
 const RecipeList = ({ category, ingredients, recipes, bag, potSize }) => {
   return (
-    <div className="p-5">
+    <div className="px-3 py-4">
       {recipes?.map((dish, i) => (
         <div
           key={`${category}-${i}`}

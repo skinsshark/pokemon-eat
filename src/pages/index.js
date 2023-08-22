@@ -103,7 +103,7 @@ export default function Home() {
           </h1>
         ) : (
           <>
-            <section className="xl:w-[60%] px-2 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
+            <section className="xl:w-[60%] px-3 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
               <header className="flex justify-center my-6">
                 <img
                   src="/assets/title.png"
@@ -125,7 +125,7 @@ export default function Home() {
               </div>
             </section>
             <article className="mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start mt-20">
-              <div className="xl:flex xl:w-full justify-between">
+              <div className="mx-2 xl:mx-0 xl:flex xl:w-full justify-between">
                 <div className="inline-block mb-4 xl:mb-0 xl:flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
                   <img
                     src="/assets/recipe-list-icon.png"
