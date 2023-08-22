@@ -21,9 +21,9 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
         return (
           <p
             key={`${dish.name.split(' ').join('-')}-${i}`}
-            className="flex items-center mr-4"
+            className="flex items-center mr-3.5"
           >
-            <span className="rounded-full flex-shrink-0 bg-amber-100 p-1 mr-1">
+            <span className="rounded-full flex-shrink-0 bg-amber-100 p-0.5 mr-1">
               <img src={imgSrc} className="w-4 sm:w-5 lg:w-7" />
             </span>
             <span
