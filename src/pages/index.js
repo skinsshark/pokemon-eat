@@ -149,7 +149,7 @@ export default function Home() {
                       borderColor="white"
                       onClick={() =>
                         setPotSize((prevPotSize) =>
-                          Math.max(prevPotSize - 1, 0)
+                          Math.max(prevPotSize - 3, 0)
                         )
                       }
                     />
@@ -164,7 +164,7 @@ export default function Home() {
                       borderColor="white"
                       onClick={() =>
                         setPotSize((prevPotSize) =>
-                          Math.min(prevPotSize + 1, 999)
+                          Math.min(prevPotSize + 3, 999)
                         )
                       }
                     />
