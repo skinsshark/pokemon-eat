@@ -6,7 +6,7 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
 
   return (
     <div className="text-xxs sm:text-xs flex items-center">
-      <p>Ingr.: </p>
+      <p className="mr-1">Ingr.: </p>
       {Array.from(Object.entries(dishIngredients)).map((obj, i) => {
         const [ingredient, count] = obj;
         const hasEnough = bag[ingredient] >= count;
@@ -25,7 +25,7 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
           >
             <span className="rounded-full flex-shrink-0 bg-amber-100 p-1 mr-1">
               <img src={imgSrc} className="w-4 sm:w-5 lg:w-7" />
-            </span>{' '}
+            </span>
             <span
               className={`font-semibold ${
                 hasEnough && dish.ingredients.numOfItems <= potSize
@@ -50,13 +50,13 @@ const RecipeList = ({ category, ingredients, recipes, bag, potSize }) => {
           key={`${category}-${i}`}
           className="flex border border-amber-700 rounded-xl mb-6"
         >
-          <div className="bg-yellow-100 rounded-l-xl p-2 flex">
+          <div className="bg-yellow-100 rounded-l-xl p-1 flex">
             <img
-              className="w-20 xl:w-24 2xl:w-36 self-center"
+              className="w-[4.5rem] xl:w-24 2xl:w-36 self-center"
               src={dish.photo}
             />
           </div>
-          <div className="px-4 py-2 md:py-2 xl:py-10 flex flex-col justify-between flex-1 flex-shrink">
+          <div className="px-3 py-2 md:py-2 xl:py-10 flex flex-col justify-between flex-1 flex-shrink">
             <h3 className="text-sm xl:text-lg font-bold">{dish.name}</h3>
             <RecipeIngredients
               category={category}

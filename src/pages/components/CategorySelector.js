@@ -27,7 +27,9 @@ const Category = ({ title, selectedCategory, setCategory }) => {
   return (
     <li
       className={`py-2 px-1 border-b-2 text-lg font-bold w-1/3 text-center cursor-pointer inline-block ${
-        isSelected ? 'text-orange-400 border-b-orange-400' : 'text-gray-600'
+        isSelected
+          ? 'text-orange-400 border-b-orange-400'
+          : 'text-gray-600 border-b-gray-300'
       }`}
       onClick={() => setCategory(title)}
     >
