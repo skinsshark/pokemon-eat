@@ -15,13 +15,13 @@ export default function Button(props) {
   }
 
   return (
-    <div
+    <button
       onClick={!isDisabled ? onClick : null}
       className={`${width === 'fixed' ? 'w-7 h-7' : 'px-9 py-2 text-xs'} ${
         isDisabled ? 'bg-gray-300' : 'cursor-pointer'
       } font-semibold rounded-full bg-${bgColor} text-${textColor} border border-${borderColor} inline-block self-center text-center`}
     >
-      {title}
-    </div>
+      {title.length <= 1 ? <p className="mt-[-2px]">{title}</p> : title}
+    </button>
   );
 }
