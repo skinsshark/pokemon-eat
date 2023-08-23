@@ -45,12 +45,14 @@ export default function Home() {
 
   // once ingredients are loaded in
   useEffect(() => {
-    // get bag from local storage if saved
-    const savedBag = localStorage.getItem('bag');
-    if (savedBag != null) {
-      setBag(() => JSON.parse(savedBag));
-    } else {
-      clearBag();
+    if (ingredients.length > 0) {
+      // get bag from local storage if saved
+      const savedBag = localStorage.getItem('bag');
+      if (savedBag != null) {
+        setBag(() => JSON.parse(savedBag));
+      } else {
+        clearBag();
+      }
     }
   }, [ingredients]);
 
