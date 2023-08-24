@@ -8,13 +8,13 @@ import CategorySelector from './components/CategorySelector';
 import Recipes from './components/Recipes';
 
 export default function Home() {
-  const [category, setCategory] = useState(CURRY);
+  const [category, setCategory] = useState(CURRY); // localStorage
   const [smthWrong, setSmthWrong] = useState(false);
   const [ingredients, setIngredients] = useState([]);
 
   const [recipeBook, setRecipeBook] = useState();
-  const [potSize, setPotSize] = useState(15);
-  const [bag, setBag] = useState({});
+  const [potSize, setPotSize] = useState(); // localStorage
+  const [bag, setBag] = useState({}); // localStorage
 
   useEffect(() => {
     (async () => {
@@ -43,7 +43,7 @@ export default function Home() {
     setBag(newBag);
   };
 
-  // once ingredients are loaded in
+  // once ingredients are loaded in, won't retrigger because ingredients don't change, only bag
   useEffect(() => {
     if (ingredients.length > 0) {
       // get bag from local storage if saved
@@ -52,6 +52,14 @@ export default function Home() {
         setBag(() => JSON.parse(savedBag));
       } else {
         clearBag();
+      }
+
+      // get potSize from local storage if saved
+      const savedPotSize = localStorage.getItem('potSize');
+      if (savedPotSize != null) {
+        setPotSize(() => JSON.parse(savedPotSize));
+      } else {
+        setPotSize(15);
       }
     }
   }, [ingredients]);
@@ -71,6 +79,13 @@ export default function Home() {
       }));
     }
   }, [bag, category, potSize]);
+
+  // save pot size in localStorage when changed
+  useEffect(() => {
+    if (potSize != null) {
+      localStorage.setItem('potSize', JSON.stringify(potSize));
+    }
+  }, [potSize]);
 
   const canFullyMakeRecipe = (recipe) => {
     if (bag != null) {
