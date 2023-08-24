@@ -159,7 +159,11 @@ export default function Home() {
                     Choose Ingredients
                   </h2>
                 </div>
-                <Button title="Reset All" onClick={() => clearBag()} />
+                <Button title="Reset All" onClick={() => {
+                  if (confirm("Empty your pot and start over?")) {
+                    clearBag()
+                  }
+                }} />
               </div>
               <div className="mt-4">
                 <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
@@ -214,7 +218,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl border-2 px-3 border-yellow-500 mt-8 w-full mb-20 xl:mb-5">
+              <div className="rounded-2xl border-2 border-yellow-500 mt-8 w-full mb-20 xl:mb-5">
                 <CategorySelector
                   category={category}
                   setCategory={setCategory}

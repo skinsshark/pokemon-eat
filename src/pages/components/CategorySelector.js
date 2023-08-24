@@ -2,7 +2,7 @@ import { CURRY, SALADS, DESSERTS } from '../../helpers/utils';
 
 export default function CategorySelector({ category, setCategory }) {
   return (
-    <ul className="flex justify-between">
+    <ul className="flex justify-between px-3">
       <Category
         title={CURRY}
         selectedCategory={category}
