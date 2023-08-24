@@ -8,7 +8,7 @@ import CategorySelector from './components/CategorySelector';
 import Recipes from './components/Recipes';
 
 export default function Home() {
-  const [category, setCategory] = useState(CURRY); // localStorage
+  const [category, setCategory] = useState(); // localStorage
   const [smthWrong, setSmthWrong] = useState(false);
   const [ingredients, setIngredients] = useState([]);
 
@@ -61,6 +61,14 @@ export default function Home() {
       } else {
         setPotSize(15);
       }
+
+      // get recipe category from local storage if saved
+      const savedCategory = localStorage.getItem('category');
+      if (savedCategory != null) {
+        setCategory(() => JSON.parse(savedCategory));
+      } else {
+        setCategory(CURRY);
+      }
     }
   }, [ingredients]);
 
@@ -86,6 +94,13 @@ export default function Home() {
       localStorage.setItem('potSize', JSON.stringify(potSize));
     }
   }, [potSize]);
+
+  // save recipe category in localStorage when changed
+  useEffect(() => {
+    if (category != null) {
+      localStorage.setItem('category', JSON.stringify(category));
+    }
+  }, [category]);
 
   const canFullyMakeRecipe = (recipe) => {
     if (bag != null) {
