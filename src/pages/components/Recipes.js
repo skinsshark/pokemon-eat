@@ -92,7 +92,7 @@ export default function Recipes({
   }, [recipeBook]);
 
   return (
-    <div className="h-[30vh] xl:h-auto xl:max-h-[41vw] overflow-scroll overflow-x-hidden px-3 rounded-b-2xl">
+    <div className="h-[35vh] xl:h-auto xl:max-h-[41vw] overflow-scroll overflow-x-hidden px-3 rounded-b-2xl">
       {category === CURRY && (
         <RecipeList
           recipes={curry}
