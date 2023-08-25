@@ -19,7 +19,7 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
         });
 
         return (
-          <p
+          <div
             key={`${dish.name.split(' ').join('-')}-${i}`}
             className="flex items-center mr-3.5"
           >
@@ -35,7 +35,7 @@ const RecipeIngredients = ({ dish, ingredients, bag, potSize }) => {
             >
               {count}
             </span>
-          </p>
+          </div>
         );
       })}
     </div>
@@ -92,7 +92,7 @@ export default function Recipes({
   }, [recipeBook]);
 
   return (
-    <div className="xl:max-h-[41vw] overflow-scroll overflow-x-hidden px-3 rounded-b-2xl">
+    <div className="h-[35vh] xl:h-auto xl:max-h-[41vw] overflow-scroll overflow-x-hidden px-3 rounded-b-2xl">
       {category === CURRY && (
         <RecipeList
           recipes={curry}

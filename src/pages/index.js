@@ -137,15 +137,16 @@ export default function Home() {
         <meta property="og:title" content="Pokémon Eat" />
         <meta property="og:image" content="/assets/preview.png" />
       </Head>
-      <main className="xl:flex justify-center select-none">
+      <main className="flex flex-wrap-reverse xl:flex-nowrap justify-center select-none">
         {smthWrong ? (
           <h1 className="mt-40 text-center text-3xl">
             {'OH NO! Something is wrong! Please try refreshing >////<'}
           </h1>
         ) : (
           <>
-            <section className="xl:w-[60%] px-3 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
-              <header className="flex justify-center my-6">
+            <section className="w-full xl:w-[60%] px-3 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
+              {/* desktop title */}
+              <header className="hidden xl:flex justify-center my-6">
                 <img
                   src="/assets/title.png"
                   className="w-4/5 md:w-1/2 xl:w-2/3"
@@ -159,17 +160,20 @@ export default function Home() {
                     Choose Ingredients
                   </h2>
                 </div>
-                <Button title="Reset All" onClick={() => {
-                  if (confirm("Empty your pot and start over?")) {
-                    clearBag()
-                  }
-                }} />
+                <Button
+                  title="Reset All"
+                  onClick={() => {
+                    if (confirm('Clear your ingredients and start over?')) {
+                      clearBag();
+                    }
+                  }}
+                />
               </div>
               <div className="mt-4">
                 <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
               </div>
             </section>
-            <article className="mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start mt-20">
+            <article className="w-full mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start xl:mt-20">
               <div className="mx-2 xl:mx-0 xl:flex xl:w-full justify-between">
                 <div className="inline-block mb-4 xl:mb-0 xl:flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-1.5 px-4 skew-x-[-8deg] rounded-md">
                   <img
@@ -218,7 +222,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="rounded-2xl border-2 border-yellow-500 mt-8 w-full mb-20 xl:mb-5">
+              <div className="rounded-2xl border-2 border-yellow-500 mt-8 w-full mb-10 xl:mb-5">
                 <CategorySelector
                   category={category}
                   setCategory={setCategory}
@@ -232,6 +236,14 @@ export default function Home() {
                 />
               </div>
             </article>
+            {/* mobile title */}
+            <header className="xl:hidden w-full flex justify-center mb-6">
+              <img
+                src="/assets/title.png"
+                className="sm:w-4/5 md:w-1/2 xl:w-2/3"
+                alt="Pokemon Eat"
+              />
+            </header>
           </>
         )}
       </main>
