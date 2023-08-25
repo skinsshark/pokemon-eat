@@ -237,7 +237,7 @@ export default function Home() {
               </div>
             </article>
             {/* mobile title */}
-            <header className="xl:hidden w-full flex justify-center mb-6">
+            <header className="xl:hidden w-[90vw] flex justify-center mt-2 mb-6">
               <img
                 src="/assets/title.png"
                 className="sm:w-4/5 md:w-1/2 xl:w-2/3"
