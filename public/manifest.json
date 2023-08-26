@@ -3,12 +3,12 @@
   "short_name": "Pokémon Eat",
   "icons": [
     {
-      "src": "./assets/icon-60.png",
+      "src": "/assets/icon-60.png",
       "sizes": "60x60",
       "type": "image/png"
     },
     {
-      "src": "./assets/icon-192.png",
+      "src": "/assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
