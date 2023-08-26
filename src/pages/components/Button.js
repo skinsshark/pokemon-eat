@@ -20,7 +20,7 @@ export default function Button(props) {
   let sizeStyles = 'px-9 py-2 text-xs shadow-float'; // regular text button
   if (isSmallButton) {
     sizeStyles = 'w-4 h-4 text-xs sm:w-7 sm:h-7';
-  } else if (title.length === 1) {
+  } else if (title?.length === 1) {
     sizeStyles = 'w-7 h-7 shadow-sm-float';
   }
 
