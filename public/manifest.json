@@ -1,15 +1,20 @@
 {
-    "name": "Pokemon Eat",
-    "short_name": "Eat",
-    "icons": [
-      {
-        "src": "./assets/icon.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      }
-    ],
-    "start_url": "/",
-    "display": "standalone",
-    "theme_color": "#fefeee",
-    "background_color": "#fefeee"
-  }
+  "name": "Pokémon Eat",
+  "short_name": "Pokémon Eat",
+  "icons": [
+    {
+      "src": "./assets/icon-60.png",
+      "sizes": "60x60",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fefeee",
+  "background_color": "#fefeee"
+}
