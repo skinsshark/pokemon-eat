@@ -11,7 +11,8 @@ module.exports = {
         xxs: '0.5rem',
       },
       boxShadow: {
-        'pot': '0 2px #bbb',
+        'float': '0 2px #bbb',
+        'sm-float': '0 1px #bbb',
       }
     },
   },

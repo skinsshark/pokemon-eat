@@ -175,7 +175,7 @@ export default function Home() {
             </section>
             <article className="w-full mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start xl:mt-20">
               <div className="xl:mx-0 flex w-full items-center justify-between">
-                <div className="xl:mb-0 flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-2 px-2 xl:py-1.5 xl:px-4 skew-x-[-8deg] rounded-md">
+                <div className="shadow-float xl:mb-0 flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-2 px-2 xl:py-1.5 xl:px-4 skew-x-[-8deg] rounded-md">
                   <img
                     src="/assets/recipe-list-icon.png"
                     className="inline-block w-4 xl:w-5 self-center"
@@ -184,18 +184,18 @@ export default function Home() {
                     Recipe List
                   </h4>
                 </div>
-                <div className="self-center flex shadow-pot bg-white font-bold py-1.5 px-4 rounded-full">
+                <div className="self-center flex shadow-float bg-white font-bold py-1.5 px-4 rounded-full">
                   <img
                     src="/assets/pot.png"
-                    className="w-4 xl:w-5 self-center"
+                    className="w-3.5 sm:w-5 self-center"
                   />
-                  <div className="flex items-center pl-3 text-gray-700">
-                    <p className="mr-4 2xl:mr-6 text-xs xl:text-lg">
-                      Pot Size:
+                  <div className="flex items-center pl-2 sm:pl-3 text-gray-700">
+                    <p className="mr-2 sm:mr-4 2xl:mr-6 text-xs sm:text-sm xl:text-lg">
+                      Max:
                     </p>
                     <Button
                       title="-"
-                      width="fixed"
+                      size="small"
                       bgColor="orange-400"
                       textColor="white"
                       borderColor="white"
@@ -206,12 +206,12 @@ export default function Home() {
                         )
                       }
                     />
-                    <p className="w-7 xl:w-12 text-center text-xs xl:text-lg">
+                    <p className="w-7 sm:w-12 text-center text-xs sm:text-sm xl:text-lg">
                       {potSize}
                     </p>
                     <Button
                       title="+"
-                      width="fixed"
+                      size="small"
                       bgColor="orange-400"
                       textColor="white"
                       borderColor="white"

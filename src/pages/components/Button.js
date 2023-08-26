@@ -2,22 +2,32 @@ export default function Button(props) {
   const {
     title,
     onClick,
-    width = 'auto',
+    size = 'regular',
     bgColor = 'white',
     textColor = 'black',
     borderColor = 'gray-400',
     isDisabled = false,
   } = props;
 
-  if (width !== 'auto' && width !== 'fixed') {
-    console.error('Buttons are only fixed or auto width');
+  if (size !== 'small' && size !== 'regular') {
+    console.error('Buttons are only small or regular sized');
     return null;
+  }
+
+  const isSmallButton = size === 'small';
+
+  // width/height + shadow styles
+  let sizeStyles = 'px-9 py-2 text-xs shadow-float'; // regular text button
+  if (isSmallButton) {
+    sizeStyles = 'w-4 h-4 text-xs sm:w-7 sm:h-7';
+  } else if (title.length === 1) {
+    sizeStyles = 'w-7 h-7 shadow-sm-float';
   }
 
   return (
     <button
       onClick={!isDisabled ? onClick : null}
-      className={`${width === 'fixed' ? 'w-7 h-7' : 'px-9 py-2 text-xs'} ${
+      className={`${sizeStyles} ${
         isDisabled
           ? 'bg-gray-300 border-white'
           : `cursor-pointer bg-${bgColor} border-gray-400`
