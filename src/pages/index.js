@@ -131,139 +131,111 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Pokémon Eat</title>
-        <meta property="og:title" content="Pokémon Eat" />
-        <meta
-          property="og:description"
-          content="Meal planning for Snorlax using your ingredients in Pokemon Sleep"
-        />
-        <meta property="og:image" content="/assets/preview.png" />
-
-        {/* Twitter meta tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pokémon Eat" />
-        <meta
-          name="twitter:description"
-          content="Meal planning for Snorlax using your ingredients in Pokemon Sleep"
-        />
-        <meta name="twitter:image" content="/assets/preview.png" />
-        <meta name="twitter:creator" content="@skinsshark" />
-      </Head>
-      <main className="flex flex-wrap-reverse xl:flex-nowrap justify-center select-none">
-        {smthWrong ? (
-          <h1 className="mt-40 text-center text-3xl">
-            {'OH NO! Something is wrong! Please try refreshing >////<'}
-          </h1>
-        ) : (
-          <>
-            <section className="w-full xl:w-[60%] px-3 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
-              {/* desktop title */}
-              <header className="hidden xl:flex justify-center my-6">
-                <img
-                  src="/assets/title.png"
-                  className="w-4/5 md:w-1/2 xl:w-2/3"
-                  alt="Pokemon Eat"
-                />
-              </header>
-              <div className="flex justify-between">
-                <div className="flex-grow border-b-2 border-b-gray-200 flex items-stretch p-2 mr-2">
-                  <div className="w-3 bg-green-500" />
-                  <h2 className="ml-3 self-center font-semibold">
-                    Choose Ingredients
-                  </h2>
-                </div>
-                <Button
-                  title="Reset All"
-                  onClick={() => {
-                    if (confirm('Clear your ingredients and start over?')) {
-                      clearBag();
-                    }
-                  }}
-                />
-              </div>
-              <div className="mt-4">
-                <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
-              </div>
-            </section>
-            <article className="w-full mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start xl:mt-20">
-              <div className="xl:mx-0 flex w-full items-center justify-between">
-                <div className="shadow-float xl:mb-0 flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-2 px-2 xl:py-1.5 xl:px-4 skew-x-[-8deg] rounded-md">
-                  <img
-                    src="/assets/recipe-list-icon.png"
-                    className="inline-block w-4 xl:w-5 self-center"
-                  />
-                  <h4 className="inline-block px-4 2xl:px-10 text-xs xl:text-lg self-center">
-                    Recipe List
-                  </h4>
-                </div>
-                <div className="self-center flex shadow-float bg-white font-bold py-1.5 px-4 rounded-full">
-                  <img
-                    src="/assets/pot.png"
-                    className="w-3.5 sm:w-5 self-center"
-                  />
-                  <div className="flex items-center pl-2 sm:pl-3 text-gray-700">
-                    <p className="mr-2 sm:mr-4 2xl:mr-6 text-xs sm:text-sm xl:text-lg">
-                      Max:
-                    </p>
-                    <Button
-                      title="-"
-                      size="small"
-                      bgColor="orange-400"
-                      textColor="white"
-                      borderColor="white"
-                      isDisabled={potSize === 15}
-                      onClick={() =>
-                        setPotSize((prevPotSize) =>
-                          Math.max(prevPotSize - 3, 15)
-                        )
-                      }
-                    />
-                    <p className="w-7 sm:w-12 text-center text-xs sm:text-sm xl:text-lg">
-                      {potSize}
-                    </p>
-                    <Button
-                      title="+"
-                      size="small"
-                      bgColor="orange-400"
-                      textColor="white"
-                      borderColor="white"
-                      isDisabled={potSize === 81}
-                      onClick={() =>
-                        setPotSize((prevPotSize) =>
-                          Math.min(prevPotSize + 3, 81)
-                        )
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-2xl border-2 border-yellow-500 mt-8 w-full mb-10 xl:mb-5">
-                <CategorySelector
-                  category={category}
-                  setCategory={setCategory}
-                />
-                <Recipes
-                  recipeBook={recipeBook}
-                  category={category}
-                  ingredients={ingredients}
-                  bag={bag}
-                  potSize={potSize}
-                />
-              </div>
-            </article>
-            {/* mobile title */}
-            <header className="xl:hidden w-[90vw] flex justify-center mt-2 mb-6">
+    <main className="flex flex-wrap-reverse xl:flex-nowrap justify-center select-none">
+      {smthWrong ? (
+        <h1 className="mt-40 text-center text-3xl">
+          {'OH NO! Something is wrong! Please try refreshing >////<'}
+        </h1>
+      ) : (
+        <>
+          <section className="w-full xl:w-[60%] px-3 xl:px-0 xl:pr-5 flex-none mb-20 xl:mb-0">
+            {/* desktop title */}
+            <header className="hidden xl:flex justify-center my-6">
               <img
                 src="/assets/title.png"
-                className="sm:w-4/5 md:w-1/2 xl:w-2/3"
+                className="w-4/5 md:w-1/2 xl:w-2/3"
                 alt="Pokemon Eat"
               />
             </header>
-          </>
-        )}
-      </main>
-    </>
+            <div className="flex justify-between">
+              <div className="flex-grow border-b-2 border-b-gray-200 flex items-stretch p-2 mr-2">
+                <div className="w-3 bg-green-500" />
+                <h2 className="ml-3 self-center font-semibold">
+                  Choose Ingredients
+                </h2>
+              </div>
+              <Button
+                title="Reset All"
+                onClick={() => {
+                  if (confirm('Clear your ingredients and start over?')) {
+                    clearBag();
+                  }
+                }}
+              />
+            </div>
+            <div className="mt-4">
+              <Bag ingredients={ingredients} bag={bag} setBag={setBag} />
+            </div>
+          </section>
+          <article className="w-full mx-4 xl:mx-3 xl:w-[40%] flex flex-col items-start xl:mt-20">
+            <div className="xl:mx-0 flex w-full items-center justify-between">
+              <div className="shadow-float xl:mb-0 flex justify-between border border-amber-700 bg-orange-400 text-white font-bold py-2 px-2 xl:py-1.5 xl:px-4 skew-x-[-8deg] rounded-md">
+                <img
+                  src="/assets/recipe-list-icon.png"
+                  className="inline-block w-4 xl:w-5 self-center"
+                />
+                <h4 className="inline-block px-4 2xl:px-10 text-xs xl:text-lg self-center">
+                  Recipe List
+                </h4>
+              </div>
+              <div className="self-center flex shadow-float bg-white font-bold py-1.5 px-4 rounded-full">
+                <img
+                  src="/assets/pot.png"
+                  className="w-3.5 sm:w-5 self-center"
+                />
+                <div className="flex items-center pl-2 sm:pl-3 text-gray-700">
+                  <p className="mr-2 sm:mr-4 2xl:mr-6 text-xs sm:text-sm xl:text-lg">
+                    Max:
+                  </p>
+                  <Button
+                    title="-"
+                    size="small"
+                    bgColor="orange-400"
+                    textColor="white"
+                    borderColor="white"
+                    isDisabled={potSize === 15}
+                    onClick={() =>
+                      setPotSize((prevPotSize) => Math.max(prevPotSize - 3, 15))
+                    }
+                  />
+                  <p className="w-7 sm:w-12 text-center text-xs sm:text-sm xl:text-lg">
+                    {potSize}
+                  </p>
+                  <Button
+                    title="+"
+                    size="small"
+                    bgColor="orange-400"
+                    textColor="white"
+                    borderColor="white"
+                    isDisabled={potSize === 81}
+                    onClick={() =>
+                      setPotSize((prevPotSize) => Math.min(prevPotSize + 3, 81))
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="rounded-2xl border-2 border-yellow-500 mt-8 w-full mb-10 xl:mb-5">
+              <CategorySelector category={category} setCategory={setCategory} />
+              <Recipes
+                recipeBook={recipeBook}
+                category={category}
+                ingredients={ingredients}
+                bag={bag}
+                potSize={potSize}
+              />
+            </div>
+          </article>
+          {/* mobile title */}
+          <header className="xl:hidden w-[90vw] flex justify-center mt-2 mb-6">
+            <img
+              src="/assets/title.png"
+              className="sm:w-4/5 md:w-1/2 xl:w-2/3"
+              alt="Pokemon Eat"
+            />
+          </header>
+        </>
+      )}
+    </main>
   );
 }
