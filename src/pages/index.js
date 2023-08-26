@@ -140,6 +140,16 @@ export default function Home() {
           content="Meal planning for Snorlax using your ingredients in Pokemon Sleep"
         />
         <meta property="og:image" content="/assets/preview.png" />
+
+        {/* Twitter meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pokémon Eat" />
+        <meta
+          name="twitter:description"
+          content="Meal planning for Snorlax using your ingredients in Pokemon Sleep"
+        />
+        <meta name="twitter:image" content="/assets/preview.png" />
+        <meta name="twitter:creator" content="@skinsshark" />
       </Head>
       <main className="flex flex-wrap-reverse xl:flex-nowrap justify-center select-none">
         {smthWrong ? (
