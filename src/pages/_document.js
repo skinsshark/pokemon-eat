@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <title>Pokémon Eat</title>
         <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/assets/icon-192.png" />
         <meta name="theme-color" content="#fefeee" />
 
