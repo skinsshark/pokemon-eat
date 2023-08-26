@@ -1,7 +1,12 @@
 {
-  "name": "Pokemon Eat",
-  "short_name": "Pokemon Eat",
+  "name": "Pokémon Eat",
+  "short_name": "Pokémon Eat",
   "icons": [
+    {
+      "src": "/assets/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
     {
       "src": "/assets/icon-60.png",
       "sizes": "60x60",
