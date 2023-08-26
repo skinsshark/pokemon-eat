@@ -135,6 +135,10 @@ export default function Home() {
       <Head>
         <title>Pokémon Eat</title>
         <meta property="og:title" content="Pokémon Eat" />
+        <meta
+          property="og:description"
+          content="Meal planning for Snorlax using your ingredients in Pokemon Sleep"
+        />
         <meta property="og:image" content="/assets/preview.png" />
       </Head>
       <main className="flex flex-wrap-reverse xl:flex-nowrap justify-center select-none">
